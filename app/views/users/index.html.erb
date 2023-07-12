@@ -1,0 +1,24 @@
+<div class="w-full flex-col items-center justify-center py-4">
+  <h3 class="w-full text-2xl text-center my-4">Technical Test</h3>
+  <table class="max-w-2xl text-sm text-left text-neutral-800 dark:text-gray-400 mx-auto">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+      <tr>
+        <th scope="col" class="px-6 py-3">Name</th>
+        <th scope="col" class="px-6 py-3">Age</th>
+        <th scope="col" class="px-6 py-3">Email</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+      <% @users.each do |user| %>
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+          <td class="px-6 py-4"><%= user.name %></td>
+          <td class="px-6 py-4"><%= user.age %></td>
+          <td class="px-6 py-4"><%= user.email %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="flex items-center justify-center mb-4">
+    <%= paginate @users %>
+  </div>
+</div>
