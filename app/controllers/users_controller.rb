@@ -2,8 +2,13 @@ class UsersController < ApplicationController
 
   def index
     user_data = FetchUserService.call
-    build_users = user_data.map { |user| User.new(user) }
-    @users = Kaminari.paginate_array(build_users).page(params[:page]).per(10)
+    @users = user_data.map { |user| User.new(user) }
+    @first_users = @users.slice(0, User::PER_PAGE)
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @users }
+    end
   end
 
 end

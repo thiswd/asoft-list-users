@@ -1,16 +1,17 @@
 <div class="w-full flex-col items-center justify-center py-4">
-  <h3 class="w-full text-2xl text-center my-4">Technical Test</h3>
-  <table class="max-w-2xl text-sm text-left text-neutral-800 dark:text-gray-400 mx-auto">
+  <table class="w-3xl text-sm text-left text-neutral-800 dark:text-gray-400 mx-auto">
     <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
       <tr>
-        <th scope="col" class="px-6 py-3">Name</th>
-        <th scope="col" class="px-6 py-3">Age</th>
-        <th scope="col" class="px-6 py-3">Email</th>
+        <th class="px-6 py-3">ID</th>
+        <th class="px-6 py-3">Name</th>
+        <th class="px-6 py-3">Age</th>
+        <th class="px-6 py-3">Email</th>
       </tr>
     </thead>
-    <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-      <% @users.each do |user| %>
+    <tbody class="divide-y divide-gray-200 dark:divide-gray-700" data-table-users="list">
+      <% @first_users.each do |user| %>
         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+          <td class="px-6 py-4"><%= user.id %></td>
           <td class="px-6 py-4"><%= user.name %></td>
           <td class="px-6 py-4"><%= user.age %></td>
           <td class="px-6 py-4"><%= user.email %></td>
@@ -18,7 +19,17 @@
       <% end %>
     </tbody>
   </table>
-  <div class="flex items-center justify-center mb-4">
-    <%= paginate @users %>
-  </div>
+  <nav class="w-full flex items-center justify-center">
+    <ul class="mx-auto inline-flex -space-x-px text-sm h-8">
+      <li>
+        <button class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" id="prev">Previous</button>
+      </li>
+      <% (1..pages_amount).each do |n| %>
+        <button class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white <%= active_page(n) %>" data-page-number="<%= n %>"><%= n %></button>
+      <% end %>
+      <li>
+        <button class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" id="next">Next</button>
+      </li>
+    </ul>
+  </nav>
 </div>
