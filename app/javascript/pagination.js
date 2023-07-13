@@ -57,8 +57,6 @@ function setActiveButton() {
 }
 
 function renderPage(users) {
-  if (users.length === 0) return;
-
   const list = document.querySelector("[data-table-users='list']");
   list.innerHTML = "";
 
@@ -70,11 +68,17 @@ function renderPage(users) {
 }
 
 function nextPage() {
+  const maxPage = Math.ceil(data.length / itemsPerPage);
+
+  if (currentPage >= maxPage) return;
+
   currentPage += 1;
   renderPage(paginate(currentPage));
 }
 
 function previousPage() {
+  if (currentPage < 2) return;
+
   currentPage -= 1;
   renderPage(paginate(currentPage));
 }
