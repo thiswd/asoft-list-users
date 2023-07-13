@@ -9,7 +9,7 @@ function createRow(user, table) {
   const row = document.createElement("tr");
   row.className = "bg-white border-b dark:bg-gray-800 dark:border-gray-700";
 
-  // Create the name cell
+  // Create the id cell
   const idCell = document.createElement("td");
   idCell.className = cellClasses;
   idCell.textContent = user.id;
@@ -81,9 +81,9 @@ function previousPage() {
 
 function goToPage(e) {
   const { pageNumber } = e.target.dataset;
-  const nextPage = Number(pageNumber)
+  const nextPage = Number(pageNumber);
 
-  if (currentPage === nextPage) return
+  if (currentPage === nextPage) return;
   currentPage = nextPage;
   renderPage(paginate(currentPage));
 }
@@ -108,14 +108,15 @@ async function fetchUsers() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", (event) => {
-  fetchUsers()
+document.addEventListener("DOMContentLoaded", () => {
+  fetchUsers();
+
   document.getElementById("next").addEventListener("click", nextPage);
   document.getElementById("prev").addEventListener("click", previousPage);
 
-  const pageButtons = [...document.querySelectorAll("[data-page-number]")]
+  const pageButtons = [...document.querySelectorAll("[data-page-number]")];
 
   pageButtons.forEach(button => {
-    button.addEventListener("click", goToPage)
+    button.addEventListener("click", goToPage);
   });
 });

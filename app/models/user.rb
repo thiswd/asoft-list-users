@@ -8,6 +8,5 @@ class User
     @name = attributes["name"]
     @age = attributes["age"]
     @email = attributes["email"]
-    @address = attributes["address"]
   end
 end
