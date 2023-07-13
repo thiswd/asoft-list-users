@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   def index
     user_data = FetchUserService.call
     @users = user_data.map { |user| User.new(user) }
@@ -10,5 +9,4 @@ class UsersController < ApplicationController
       format.json { render json: @users }
     end
   end
-
 end

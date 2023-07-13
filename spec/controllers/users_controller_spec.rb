@@ -6,8 +6,8 @@ describe UsersController do
   describe "GET #index" do
     it "populates an array of users" do
       users = [
-        {name: "Usuário 1", age: 30, email: "primeiro@example.com"},
-        {name: "Usuário 1000", age: 25, email: "jane.ultimo@example.com"}
+        { name: "Usuário 1", age: 30, email: "primeiro@example.com" },
+        { name: "Usuário 1000", age: 25, email: "jane.ultimo@example.com" }
       ]
       allow(FetchUserService).to receive(:call).and_return(users)
 
