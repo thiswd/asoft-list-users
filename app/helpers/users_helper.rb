@@ -1,6 +1,6 @@
 module UsersHelper
   def pages_amount
-    (@users.length / User::PER_PAGE).ceil
+    (@users.length / User::PER_PAGE.to_f).ceil
   end
 
   def active_page(n)
